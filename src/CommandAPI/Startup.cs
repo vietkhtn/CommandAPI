@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using CommandAPI.Data;
 
 namespace CommandAPI
 {
@@ -20,6 +21,9 @@ namespace CommandAPI
         {
             // Đăng kí services cấp quyền dùng Controller
             services.AddControllers();
+
+            // Kết nối Repository Interface đến nơi code chức năng của các hàm khai báo trong nó
+            services.AddScoped<ICommandAPIRepo, MockCommandAPIRepo>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
